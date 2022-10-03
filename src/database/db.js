@@ -1,8 +1,4 @@
 import { Sequelize } from 'sequelize';
+import config from '../../sequelize-file.js';
 
-const sequelize = new Sequelize('', 'root', 'root', {
-	host: '',
-	port: '',
-	dialect: 'mysql',
-	logging: true,
-});
+export const sequelize = new Sequelize(process.env.MYSQL_DATABASE, 'root', 'root', config.development);
