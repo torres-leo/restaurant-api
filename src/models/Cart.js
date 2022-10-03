@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../database/db';
+import sequelize from '../database/db';
 import { Product } from './Product';
 
 const Cart = sequelize.define('Cart', {
@@ -10,14 +10,19 @@ const Cart = sequelize.define('Cart', {
 	},
 });
 
-Cart.hasMany(Product, {
-	foreignKey: 'productId',
-	sourceKey: 'id',
+// Cart.hasMany(Product, {
+// 	foreignKey: 'productId',
+// 	sourceKey: 'id',
+// });
+
+Cart.belongsToMany(Product, {
+	through: 'productId',
 });
 
-Product.belongsTo(Cart, {
-	foreignKey: 'productId',
-	targetId: 'id',
+Product.belongsToMany(Cart, {
+	// foreignKey: 'productId',
+	// targetKey: 'id',
+	through: 'productId',
 });
 
 export { Cart };

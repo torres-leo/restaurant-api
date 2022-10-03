@@ -16,12 +16,6 @@ app.use(cors());
 
 app.set('PORT', process.env.PORT || 3000);
 
-app.listen(app.get('PORT'), async () => {
-	// console.log(`Server on port:`, app.get('PORT'));
-	try {
-		await sequelize.sync({ force: true });
-		console.log('Connection has been established successfully.');
-	} catch (error) {
-		console.error('Unable to connect to the database:', error);
-	}
+app.listen(app.get('PORT'), () => {
+	console.log(`Server on port:`, app.get('PORT'));
 });
