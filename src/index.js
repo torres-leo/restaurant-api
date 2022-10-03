@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { sequelize } from './database/db';
 import './models/Product';
+import './models/Cart';
 
 dotenv.config();
 const app = express();

@@ -9,7 +9,15 @@ const Cart = sequelize.define('Cart', {
 		autoIncrement: true,
 	},
 });
+
 Cart.hasMany(Product, {
 	foreignKey: 'productId',
 	sourceKey: 'id',
 });
+
+Product.belongsTo(Cart, {
+	foreignKey: 'productId',
+	targetId: 'id',
+});
+
+export { Cart };
