@@ -1,28 +1,37 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../database/db';
 
-const Product = sequelize.define('Product', {
-	id: {
-		type: DataTypes.INTEGER,
-		primaryKey: true,
-		autoIncrement: true,
-	},
-	name: {
-		type: DataTypes.STRING,
-	},
-	price: {
-		type: DataTypes.FLOAT,
-	},
-	image: {
-		type: DataTypes.STRING,
-	},
-	description: {
-		type: DataTypes.STRING,
-	},
-	category: {
-		type: DataTypes.ENUM,
-		values: ['CHICKEN', 'BURGER', 'ICE_CREAM', 'DRINKS', 'NOODLES', 'DEFAULT'],
-	},
-});
+const Product = (sequelize) => {
+	sequelize.define('product', {
+		id: {
+			type: DataTypes.UUID,
+			defaultValue: DataTypes.UUIDV4,
+			primaryKey: true,
+		},
+		name: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		price: {
+			type: DataTypes.FLOAT,
+			allowNull: false,
+		},
+		image: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		description: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		category: {
+			type: DataTypes.ENUM,
+			values: ['CHICKEN', 'BURGER', 'ICE_CREAM', 'DRINKS', 'NOODLES'],
+			allowNull: false,
+		},
+		discount: {
+			type: DataTypes.INTEGER,
+		},
+	});
+};
 
-export { Product };
+export default Product;
