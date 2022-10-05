@@ -1,13 +1,17 @@
 import { DataTypes } from 'sequelize';
 
 const Cart = (sequelize) => {
-	sequelize.define('cart', {
-		id: {
-			type: DataTypes.UUID,
-			defaultValue: DataTypes.UUIDV4,
-			primaryKey: true,
+	return sequelize.define(
+		'cart',
+		{
+			id: {
+				type: DataTypes.UUID,
+				defaultValue: DataTypes.UUIDV4,
+				primaryKey: true,
+			},
 		},
-	});
+		{ paranoid: true }
+	);
 };
 
 export default Cart;

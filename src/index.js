@@ -3,6 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import productRoutes from './routes/product.routes';
+import cartRoutes from './routes/cart.routes';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(productRoutes);
+app.use(cartRoutes);
 
 app.set('PORT', process.env.PORT || 3000);
 

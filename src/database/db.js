@@ -17,14 +17,6 @@ sequelize
 
 const db = {};
 
-Cart.belongsToMany(Product, {
-	through: Cart_detail,
-});
-
-Product.belongsToMany(Cart, {
-	through: Cart_detail,
-});
-
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.cart = Cart(sequelize);
@@ -33,6 +25,14 @@ db.cart_detail = Cart_detail(sequelize);
 
 db.sequelize.sync({ force: true }).then(() => {
 	console.log('Created Tables..');
+});
+
+db.cart.belongsToMany(db.product, {
+	through: db.cart_detail,
+});
+
+db.product.belongsToMany(db.cart, {
+	through: db.cart_detail,
 });
 
 export default db;
