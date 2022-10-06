@@ -21,10 +21,6 @@ const Product = (sequelize) => {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
-			description: {
-				type: DataTypes.STRING,
-				allowNull: true,
-			},
 			category: {
 				type: DataTypes.ENUM,
 				values: ['CHICKEN', 'BURGER', 'ICE_CREAM', 'DRINKS', 'NOODLES'],

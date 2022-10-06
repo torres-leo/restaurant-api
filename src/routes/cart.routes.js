@@ -8,6 +8,7 @@ import {
 	addProductToCart,
 	deleteProductFromCart,
 } from '../controllers/cart.controller';
+import { cartDetailSchema, validateSchema } from '../validations';
 
 const router = Router();
 
@@ -17,7 +18,7 @@ router.post('/cart', createCart);
 router.put('/cart/:id', updateCart);
 router.delete('/cart/:id', deleteCart);
 
-router.post('/cart/add-product', addProductToCart);
-router.post('/cart/remove-product', deleteProductFromCart);
+router.post('/cart/add-product', validateSchema(cartDetailSchema), addProductToCart);
+router.post('/cart/remove-product', validateSchema(cartDetailSchema), deleteProductFromCart);
 
 export default router;

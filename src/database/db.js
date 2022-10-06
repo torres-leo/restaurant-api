@@ -24,8 +24,8 @@ db.product = Product(sequelize);
 db.cart_detail = Cart_detail(sequelize);
 
 db.sequelize
-	// .sync({ force: true })
-	.sync({ force: false })
+	.sync({ force: true })
+	// .sync({ force: false })
 	.then(() => {
 		console.log('Created Tables..');
 	})
