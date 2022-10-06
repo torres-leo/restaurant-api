@@ -19,11 +19,11 @@ const Product = (sequelize) => {
 			},
 			image: {
 				type: DataTypes.STRING,
-				// allowNull: false,
+				allowNull: false,
 			},
 			description: {
 				type: DataTypes.STRING,
-				allowNull: false,
+				allowNull: true,
 			},
 			category: {
 				type: DataTypes.ENUM,
@@ -32,6 +32,7 @@ const Product = (sequelize) => {
 			},
 			discount: {
 				type: DataTypes.INTEGER,
+				allowNull: true,
 			},
 		},
 		{ paranoid: true }

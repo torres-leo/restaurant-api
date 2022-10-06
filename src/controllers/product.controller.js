@@ -4,7 +4,6 @@ const Product = db.product;
 
 export const getProducts = async (req, res) => {
 	try {
-		// throw new Error('Failed fetch');
 		const products = await Product.findAll();
 		res.status(200).json(products);
 	} catch (error) {
@@ -71,7 +70,6 @@ export const deleteProduct = async (req, res) => {
 				id,
 			},
 		});
-
 		res.sendStatus(204);
 	} catch (error) {
 		return res.status(500).json({ message: error.message });

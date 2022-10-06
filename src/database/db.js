@@ -23,9 +23,13 @@ db.cart = Cart(sequelize);
 db.product = Product(sequelize);
 db.cart_detail = Cart_detail(sequelize);
 
-db.sequelize.sync({ force: true }).then(() => {
-	console.log('Created Tables..');
-});
+db.sequelize
+	// .sync({ force: true })
+	.sync({ force: false })
+	.then(() => {
+		console.log('Created Tables..');
+	})
+	.catch((error) => console.log('Cannot created Tables. Error: ', error));
 
 db.cart.belongsToMany(db.product, {
 	through: db.cart_detail,
