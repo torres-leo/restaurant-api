@@ -1,31 +1,33 @@
-export default {
+const config = {
 	development: {
-		host: process.env.MYSQL_HOST,
-		port: process.env.MYSQL_PORT,
-		dialect: 'mysql',
-		logging: true,
 		database: process.env.MYSQL_DATABASE,
 		username: process.env.MYSQL_USER,
 		password: process.env.MYSQL_PASSWORD,
+		host: process.env.MYSQL_HOST,
+		port: process.env.MYSQL_PORT,
+		logging: true,
+		dialect: 'mysql',
 	},
 
 	production: {
-		host: process.env.MYSQL_HOST,
-		port: process.env.MYSQL_PORT,
-		dialect: 'mysql',
-		logging: true,
 		database: process.env.MYSQL_DATABASE,
 		username: process.env.MYSQL_USER,
 		password: process.env.MYSQL_PASSWORD,
+		host: process.env.MYSQL_HOST,
+		port: process.env.MYSQL_PORT,
+		logging: true,
+		dialect: 'mysql',
 	},
 
 	testing: {
-		host: process.env.MYSQL_HOST,
-		port: process.env.MYSQL_PORT,
-		dialect: 'mysql',
-		logging: true,
 		database: process.env.MYSQL_DATABASE,
 		username: process.env.MYSQL_USER,
 		password: process.env.MYSQL_PASSWORD,
+		host: process.env.MYSQL_HOST,
+		port: process.env.MYSQL_PORT,
+		logging: true,
+		dialect: 'mysql',
 	},
 };
+
+module.exports = config;

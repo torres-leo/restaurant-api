@@ -29,8 +29,8 @@ services:
     volumes:
       - .:/app/
       - /app/node_modules
-    # command: >
-    #   sh -c "yarn && yarn migration:run && yarn seed:run && yarn start:dev"
+    command: >
+      sh -c "yarn && yarn migration:run && yarn seed:run && yarn start"
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     env_file:

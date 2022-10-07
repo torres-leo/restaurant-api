@@ -12,13 +12,13 @@ import { cartDetailSchema, validateSchema } from '../validations';
 
 const router = Router();
 
-router.get('/cart', getCarts);
-router.get('/cart/:id', getCart);
-router.post('/cart', createCart);
-router.put('/cart/:id', updateCart);
-router.delete('/cart/:id', deleteCart);
+router.get('/', getCarts);
+router.get('/:id', getCart);
+router.post('/', createCart);
+router.put('/:id', updateCart);
+router.delete('/:id', deleteCart);
 
-router.post('/cart/add-product', validateSchema(cartDetailSchema), addProductToCart);
-router.post('/cart/remove-product', validateSchema(cartDetailSchema), deleteProductFromCart);
+router.post('/add-product', validateSchema(cartDetailSchema), addProductToCart);
+router.post('/remove-product', validateSchema(cartDetailSchema), deleteProductFromCart);
 
 export default router;

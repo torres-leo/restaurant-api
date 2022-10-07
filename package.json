@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "babel src/index.js -d dist",
-		"start": "nodemon --exec babel-node src/index.js"
+		"start": "nodemon --exec babel-node src/index.js",
+		"migration:run": "sequelize-cli db:migrate",
+		"seed:run": "sequelize-cli seed:generate"
 	},
 	"author": "Leo Torres",
 	"license": "ISC",
@@ -23,6 +25,7 @@
 		"@babel/core": "^7.19.3",
 		"@babel/node": "^7.19.1",
 		"@babel/preset-env": "^7.19.3",
-		"nodemon": "^2.0.20"
+		"nodemon": "^2.0.20",
+		"sequelize-cli": "^6.5.1"
 	}
 }
