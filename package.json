@@ -7,7 +7,7 @@
 		"build": "babel src/index.js -d dist",
 		"start": "nodemon --exec babel-node src/index.js",
 		"migration:run": "sequelize-cli db:migrate",
-		"seed:run": "sequelize-cli seed:generate"
+		"seed:run": "sequelize-cli db:seed:all"
 	},
 	"author": "Leo Torres",
 	"license": "ISC",
