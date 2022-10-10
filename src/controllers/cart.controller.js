@@ -9,7 +9,7 @@ export const getCarts = async (req, res) => {
 		const carts = await Cart.findAll();
 		res.status(200).json(carts);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(400).json({ message: error.message });
 	}
 };
 
@@ -29,7 +29,7 @@ export const getCart = async (req, res) => {
 		if (!cart) return res.status(404).json({ message: 'cart not Found' });
 		res.json(cart);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(404).json({ message: error.message });
 	}
 };
 
@@ -38,7 +38,7 @@ export const createCart = async (req, res) => {
 		const newCart = await Cart.create();
 		res.status(200).json(newCart);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(400).json({ message: error.message });
 	}
 };
 
@@ -49,9 +49,9 @@ export const updateCart = async (req, res) => {
 		const cart = await Cart.findOne({ where: { id } });
 
 		await cart.save();
-		return res.json(product);
+		return res.json(cart);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(404).json({ message: error.message });
 	}
 };
 
@@ -66,7 +66,7 @@ export const deleteCart = async (req, res) => {
 
 		res.sendStatus(204);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(400).json({ message: error.message });
 	}
 };
 
@@ -79,7 +79,7 @@ export const addProductToCart = async (req, res) => {
 		});
 		res.status(200).json(productCart);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(400).json({ message: error.message });
 	}
 };
 
@@ -94,6 +94,6 @@ export const deleteProductFromCart = async (req, res) => {
 		});
 		res.sendStatus(204);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(400).json({ message: error.message });
 	}
 };

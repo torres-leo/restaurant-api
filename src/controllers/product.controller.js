@@ -1,5 +1,4 @@
 import db from '../database/db';
-import { Op } from 'sequelize';
 
 const Product = db.product;
 
@@ -15,7 +14,7 @@ export const getProducts = async (req, res) => {
 		});
 		res.status(200).json(products);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(400).json({ message: error.message });
 	}
 };
 
@@ -27,7 +26,7 @@ export const getProduct = async (req, res) => {
 		if (!product) return res.status(404).json({ message: 'Product not Found' });
 		res.json(product);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(404).json({ message: error.message });
 	}
 };
 
@@ -45,7 +44,7 @@ export const createProduct = async (req, res) => {
 
 		res.status(200).json(newProduct);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(400).json({ message: error.message });
 	}
 };
 
@@ -65,7 +64,7 @@ export const updateProduct = async (req, res) => {
 		await product.save();
 		res.json(product);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(404).json({ message: error.message });
 	}
 };
 
@@ -79,6 +78,6 @@ export const deleteProduct = async (req, res) => {
 		});
 		res.sendStatus(204);
 	} catch (error) {
-		return res.status(500).json({ message: error.message });
+		return res.status(400).json({ message: error.message });
 	}
 };
