@@ -1,10 +1,18 @@
 import db from '../database/db';
+import { Op } from 'sequelize';
 
 const Product = db.product;
 
 export const getProducts = async (req, res) => {
 	try {
-		const products = await Product.findAll();
+		let params = {};
+		const { category } = req.query;
+		if (category) {
+			params = { category };
+		}
+		const products = await Product.findAll({
+			where: { ...params },
+		});
 		res.status(200).json(products);
 	} catch (error) {
 		return res.status(500).json({ message: error.message });
@@ -14,7 +22,6 @@ export const getProducts = async (req, res) => {
 export const getProduct = async (req, res) => {
 	try {
 		const { id } = req.params;
-		// const product = await Product.findByPk(id);
 		const product = await Product.findOne({ where: { id } });
 
 		if (!product) return res.status(404).json({ message: 'Product not Found' });
